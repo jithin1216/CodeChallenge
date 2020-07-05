@@ -1,4 +1,4 @@
-class UrlMappings {
+class UrlMappings {  
 
 	static mappings = {
         "/$controller/$action?/$id?(.$format)?"{
@@ -7,7 +7,8 @@ class UrlMappings {
             }
         }
 
-        "/"(view:"/index")
+        //"/"(view:"/index")
+		"/"(view:"/challengeTwo")
         "500"(view:'/error')
 	}
 }
