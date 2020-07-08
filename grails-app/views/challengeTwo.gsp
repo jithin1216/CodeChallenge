@@ -1,53 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Temperature Calculator</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<asset:javascript src="main.js"/>   
+<asset:javascript src="main.js"/> 
 <asset:stylesheet src="style.css"/>
-</head>   
 
+</head>
 <body>
-
-<form class="addcustomer">   
-  <header>
-    <h2>Temperature Converter</h2>
-    <div>Give Temperature unit as Celsius/Fahrenheit and value(eg: 20)</div>
-  </header>
-  
-  <div>
-    <label class="desc" id="title1" for="Field1">Temp Unit(Celsius/Fahrenheit)</label> 
-    <div>
-      <input id="temp" name="temp" type="text" class="field text fn" size="8" tabindex="1">
-    </div>
-  </div>
-    
-  <div>
-    <label class="desc" id="title2" for="Field3">
-      Value
-    </label>
-    <div>
-      <input id="value" name="value" type="text" spellcheck="false" maxlength="255" tabindex="3"> 
-   </div>
-  </div>
-  <div>
-    <label class="desc" id="title2" for="Field4">
-      Result
-    </label>
-    <div>
-      <input id="output" name="output" type="text" spellcheck="false"  tabindex="3" readonly="true"> 
-   </div>
-  </div>
-  <div>
-		<div>
-  		 <input id="converttemp" name="saveForm" type="submit" value="Submit"> 
-    </div>
-	</div>
-  
-</form>
-     
-
+<div class="login-form">
+    <form class="addcustomer">
+        <h2 class="text-center">Temperature Calculator</h2>       
+        <div class="form-group">
+            <input id="temp" name="temp" type="text" class="form-control" placeholder="Enter Celsius or Fahrenheit" required="required">
+        </div>
+        <div class="form-group">
+            <input id="value" name="value" type="text" class="form-control" placeholder="Value" required="required">
+        </div>
+        <div class="form-group">
+            <input id="converttemp" name="saveForm" type="submit" class="btn btn-primary btn-block" value="submit"/>
+        </div>
+        <div class="form-group">
+            <input id="output" name="output" type="text" class="form-control" placeholder="Result" readonly="readonly"> 
+        </div>
+        <div id="errormsg" style="display: none">Enter Celsius or Fahrenheit properly</div>       
+    </form>
+    <p class="text-center"><g:link controller="logout" > Logout</g:link></p>      
+</div>
 </body>
-
 </html>

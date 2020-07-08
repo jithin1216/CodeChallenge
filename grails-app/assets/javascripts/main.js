@@ -17,7 +17,11 @@ $("#converttemp").click(function(event){
 		data : JSON.stringify(customerData),
 		dataType : 'json',				
 		success : function(params) {
-			$('#output').val(params[1]);  
+			$('#output').val(params[1]); 
+			if(params[1]=="")
+				$("#errormsg").show();
+			else
+				$("#errormsg").hide(); 
 			console.log(params);
 		},   
 		error : function(e) {

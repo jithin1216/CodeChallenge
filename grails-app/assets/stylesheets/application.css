@@ -11,3 +11,20 @@
 *= require mobile
 *= require_self
 */
+#login {
+    height: 401px;
+    position: relative;  
+    top: 72px;
+}
+#login #submit {
+    background-color: #007bff;
+    margin-left: 35px !important;
+}
+.fheader {
+    text-align: center;
+}
+p#remember_me_holder {
+    display: none;
+}
+body {
+    width: 50%;
