@@ -1,22 +1,26 @@
 package com.challenge.one
 
+import org.hibernate.Session
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction
+import org.springframework.web.multipart.MultipartFile
+import grails.converters.JSON
 
 class FileUploadController {
 	
 	SessionFactory sessionFactory
+	Session session
 
     def index() { }
 	
 	def upload(){
-		def session = sessionFactory.currentSession
+		session = sessionFactory.openSession()  
 		Transaction tx = session.beginTransaction()
 		int lineCount=0
 		ArrayList<Integer> errorinfo=new ArrayList<Integer>()
 		int temp=0;
 		String[] resultArray = new String[0];
-		request.getFile('file').inputStream.eachLine { line ->
+		request.getFile('filesList').inputStream.eachLine { line ->
 			resultArray=line.split(",")
 			try{
 				lineCount++
@@ -39,13 +43,16 @@ class FileUploadController {
 			}
 		}
 		if(temp==0){
-			tx.commit()
+			tx.commit() 
 			session.flush()
 			session.clear()
-			render(view: "/fileUpload/displayData", model: [userList : FileUpload.list()])
-		}
-		else{
-			render(view: "/fileUpload/errorInfo", model: [errorList : errorinfo])
-		}
+			session.close()         
+			render FileUpload.list() as JSON    
+		}   
+		else{  
+			tx.rollback()
+			session.close()         
+			render errorinfo as JSON         
+		}   
 	}
 }
